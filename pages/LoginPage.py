@@ -8,6 +8,6 @@ class LoginPage():
         self.emailInput = (By.XPATH, '//input[@placeholder="Enter email"]')
         self.loginBtn = (By.CSS_SELECTOR, 'button')
 
-    def login(self, email):
-        self.driver.find_element(*self.emailInput).send_keys(email)
+    def login(self):
+        self.driver.find_element(*self.emailInput).send_keys('pvpsuman@gmail.com')
         self.driver.find_element(*self.loginBtn).click()
