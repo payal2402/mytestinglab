@@ -13,6 +13,8 @@ def pytest_addoption(parser):
     parser.addoption('--TEST_URL', action='store', default='http://mytestinglabs.in', help='Test Enviroment URL')
     parser.addoption('--BROWSER', action='store', default="chrome")
     parser.addoption('--BROWSER_MODE', action='store', default=None)  # head mode/ headless mode
+    parser.addoption('--EMAIL', action='store', required=True)
+
 
 @pytest.fixture(scope='session')
 def config():
@@ -44,7 +46,7 @@ def driver(config, pytestconfig):
     driver.implicitly_wait(implicit_wait)
     driver.get(pytestconfig.getoption('TEST_URL'))
     login = LoginPage.LoginPage(driver)
-    login.login()
+    login.login(pytestconfig.getoption('EMAIL'))
     # Return the driver object at the end of setup
     yield driver
 
