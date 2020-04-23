@@ -1,5 +1,5 @@
 
-from pages.locators import CommonLocators
+from pages.locators import Loginlocator
 
 
 class CommonActions:
@@ -8,5 +8,5 @@ class CommonActions:
 
 
     def get_logo_name(self):
-        logo = self.driver.find_element(*CommonLocators.logoName)
+        logo = self.driver.find_element(*Loginlocator.logoName)
         return logo.text
